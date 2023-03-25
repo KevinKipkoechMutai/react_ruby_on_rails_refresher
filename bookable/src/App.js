@@ -5,8 +5,11 @@ import Books from "./components/Books"
 
 const API_URL = "http://localhost:3000/api/v1/books"
 
+let bookData
+
 function getAPIData() {
-  return axios.get(API_URL).then((response) => response.data)
+  bookData =  axios.get(API_URL).then((response) => response.data)
+  return bookData
 }
 
 function App() {
@@ -20,7 +23,7 @@ function App() {
       }
       return () => (mounted = false)
     })
-  }, [])
+  }, [bookData])
 
   return (
     <div className="App" style={{
